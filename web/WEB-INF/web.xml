@@ -241,4 +241,22 @@
         <servlet-name>Log4JInitServlet</servlet-name>
         <url-pattern>/log4jInit</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UsernameIsAvailableServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlet.UsernameIsAvailableServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsernameIsAvailableServlet</servlet-name>
+        <url-pattern>/usernameIsAvailable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CompleteSearchServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlet.CompleteSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompleteSearchServlet</servlet-name>
+        <url-pattern>/completeSearch</url-pattern>
+    </servlet-mapping>
 </web-app>

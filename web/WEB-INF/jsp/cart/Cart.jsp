@@ -14,9 +14,10 @@
 <div id="Catalog">
 
     <div id="Cart">
+        <script>var items = new Array();</script>
 
         <h2>Shopping Cart</h2>
-            <form action="updateCart" method="post">
+            <form action="updateCart" method="post" name="cartForm">
                 <table>
                     <tr>
                         <th><b>Item ID</b></th>
@@ -49,12 +50,16 @@
                             <td>${cartItem.inStock}</td>
                             <td>
                                 <input type="text" name="${cartItem.item.itemId}" value="${cartItem.quantity}">
+                                <script>
+                                    var item = "${cartItem.item.itemId}";
+                                    items.push(item);
+                                </script>
                             </td>
                             <td>
-                                <fmt:formatNumber value="${cartItem.item.listPrice}" pattern="$#,##0.00" />
+                                <div name="${cartItem.item.itemId}">${cartItem.item.listPrice}</div>
                             </td>
                             <td>
-                                <fmt:formatNumber value="${cartItem.total}" pattern="$#,##0.00" />
+                                <div name="${cartItem.item.itemId}">${cartItem.total}</div>
                             </td>
                             <td>
                                 <a class="Button" href="removeItemFromCart?workingItemId=${cartItem.item.itemId}">Remove</a>
@@ -80,3 +85,19 @@
 </div>
 
 <%@ include file="../common/IncludeBottom.jsp"%>
+
+<script>
+    window.onload = function () {
+        for(var i=0; i<items.length; i++) {
+            console.log(items[i]);
+            var itemElements = document.getElementsByName(items[i]);
+            itemElements[0].addEventListener("blur", function () {
+                var quantity = itemElements[0].value;
+                var price = itemElements[1].innerHTML;
+                console.log(quantity);
+                console.log(price);
+                itemElements[2].innerHTML = (parseInt(quantity) * parseFloat(price)).toFixed(2).toString();
+            })
+        }
+    }
+</script>
