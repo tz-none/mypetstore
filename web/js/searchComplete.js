@@ -11,24 +11,31 @@ function createXMLHttpRequest() {
 
 function autoComplete() {
     var keyword = document.searchForm.keyword.value;
-    sendRequest("completeSearch?keyword="+keyword);
+    console.log(keyword);
+    sendRequestSearch("completeSearch?keyword="+keyword);
 }
 
-function sendRequest(url) {
+function sendRequestSearch(url) {
     createXMLHttpRequest();
     xmlHttpRequest.open("GET", url, true);
-    xmlHttpRequest.onreadystatechange = processResponse;
+    xmlHttpRequest.onreadystatechange = processResponseSearch;
     xmlHttpRequest.send(null);
 }
 
-function processResponse() {
+function processResponseSearch() {
+    console.log("回调函数");
     if(xmlHttpRequest.readyState == 4) {
         if(xmlHttpRequest.status == 200) {
             var products = xmlHttpRequest.responseXML.getElementsByTagName("product");
             var datalist = document.getElementById("complete");
+            var length = datalist.options.length;
+            console.log(datalist.options[0]);
+            for(var i=0; i<length; i++) {
+                datalist.options.remove(0);
+            }
             for(var i=0; i<products.length; i++) {
                 var product = products[i].firstChild.data;
-                datalist.options.add(new Option(product, product));
+                datalist.appendChild(new Option(product, product));
             }
         }
     }

@@ -34,5 +34,4 @@ public class DButil {
     public static void closeConnection(Connection connection) throws Exception {
         connection.close();
     }
-
 }

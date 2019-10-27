@@ -80,48 +80,6 @@
 
 </div>
 
-<script>
-    var xmlHttpRequest;
-    function createXMLHttpRequest() {
-        if(window.XMLHttpRequest) {
-            xmlHttpRequest = new XMLHttpRequest();
-        }else if(window.ActiveXObject) {
-            xmlHttpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        }else {
-            xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-    }
-
-    function autoComplete() {
-        var keyword = document.searchForm.keyword.value;
-        if(keyword != "") {
-            sendRequest("completeSearch?keyword="+keyword);
-        }
-    }
-
-    function sendRequest(url) {
-        createXMLHttpRequest();
-        xmlHttpRequest.open("GET", url, true);
-        xmlHttpRequest.onreadystatechange = processResponse;
-        xmlHttpRequest.send(null);
-    }
-
-    function processResponse() {
-        if(xmlHttpRequest.readyState == 4) {
-            if(xmlHttpRequest.status == 200) {
-                var products = xmlHttpRequest.responseXML.getElementsByTagName("product");
-                var datalist = document.getElementById("complete");
-                datalist.innerHTML="";
-                for(var i=0; i<products.length; i++) {
-                    var option = document.createElement("option");
-                    var product = products[i].firstChild.data;
-                    option.text = product
-                    datalist.appendChild(option);
-                    console.log(product);
-                }
-            }
-        }
-    }
-</script>
+<script src="../../../js/searchComplete.js"></script>
 
 <div id="Content">

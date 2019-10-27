@@ -1,38 +1,28 @@
-var usernameInput = document.getElementsByName("username")[0];
-console.log(usernameInput);
-usernameInput.addEventListener("blur", function () {
-});
-
-var xmlHttpRequest;
-function createXMLHttpRequest() {
-    if(window.XMLHttpRequest) {
-        xmlHttpRequest = new XMLHttpRequest();
-    }else if(window.ActiveXObject) {
-        xmlHttpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-    }else {
-        xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+window.onload = function () {
+    var usernameInput = document.getElementsByName("username")[0];
+    usernameInput.addEventListener("blur", usernameIsAvailable);
 }
 
 function usernameIsAvailable() {
     var username = document.registerForm.username.value;
-    sendRequest("usernameIsAvailable?username="+username);
+    console.log(username);
+    sendRequestRegister("usernameIsAvailable?username="+username);
 }
 
-function sendRequest(url) {
+function sendRequestRegister(url) {
     createXMLHttpRequest();
     xmlHttpRequest.open("GET", url, true);
-    xmlHttpRequest.onreadystatechange = processResponse;
+    xmlHttpRequest.onreadystatechange = processResponseRegister;
     xmlHttpRequest.send(null);
 }
 
-function processResponse() {
-    console.log(xmlHttpRequest.readyState);
+function processResponseRegister() {
     if(xmlHttpRequest.readyState == 4) {
         if(xmlHttpRequest.status == 200) {
             var responseInfo = xmlHttpRequest.responseXML.getElementsByTagName("msg")[0].firstChild.data;
 
             var div1 = document.getElementById("usernameMsg");
+            console.log(responseInfo);
 
             if(responseInfo == "Available") {
                 div1.innerHTML = "<font color='green'>avaliable</font>";
