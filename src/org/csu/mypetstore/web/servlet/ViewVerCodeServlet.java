@@ -21,7 +21,7 @@ public class ViewVerCodeServlet extends HttpServlet {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         HttpSession session = request.getSession();
-        VerCode vercode = new VerCode(50, 20, 4, 10);
+        VerCode vercode = new VerCode(70, 20, 4, 10);
         session.setAttribute("code", vercode.getCode());
         try {
             vercode.write(response.getOutputStream());
