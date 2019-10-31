@@ -23,7 +23,6 @@ function sendRequestSearch(url) {
 }
 
 function processResponseSearch() {
-    console.log("回调函数");
     if(xmlHttpRequest.readyState == 4) {
         if(xmlHttpRequest.status == 200) {
             var products = xmlHttpRequest.responseXML.getElementsByTagName("product");

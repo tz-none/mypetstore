@@ -15,6 +15,7 @@ import java.util.Iterator;
 
 public class ViewCartServlet extends HttpServlet {
     private static final String CART = "/WEB-INF/jsp/cart/Cart.jsp";
+    private static final String ACCOUNT = "/WEB-INF/jsp/account/SignonForm.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -24,11 +25,14 @@ public class ViewCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
 
-        if(account != null) {
-            CatalogService service = new CatalogService();
-            Cart cart = (Cart) service.getCartByUsername(account.getUsername());
-            session.setAttribute("cart", cart);
+        if(account == null) {
+            request.getRequestDispatcher(ACCOUNT).forward(request, response);
+            return;
         }
+
+        CatalogService service = new CatalogService();
+        Cart cart = (Cart) service.getCartByUsername(account.getUsername());
+        session.setAttribute("cart", cart);
 
         request.getRequestDispatcher(CART).forward(request, response);
     }

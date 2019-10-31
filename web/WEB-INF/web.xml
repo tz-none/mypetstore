@@ -259,4 +259,13 @@
         <servlet-name>CompleteSearchServlet</servlet-name>
         <url-pattern>/completeSearch</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ComputeCartItemServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlet.ComputeCartItemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ComputeCartItemServlet</servlet-name>
+        <url-pattern>/computeCartItem</url-pattern>
+    </servlet-mapping>
 </web-app>
