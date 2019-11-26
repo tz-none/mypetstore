@@ -20,8 +20,11 @@ public class SignoffServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        Logger logger = Logger.getLogger(SignoffServlet.class);
-        logger.info(((Account)session.getAttribute("account")).getUsername() + "用户下线");
+        Account account = (Account) session.getAttribute("account");
+        if(account != null) {
+            Logger logger = Logger.getLogger(SignoffServlet.class);
+            logger.info(account.getUsername() + "用户下线");
+        }
 
         session.removeAttribute("account");
         request.getRequestDispatcher(MAIN).forward(request, response);

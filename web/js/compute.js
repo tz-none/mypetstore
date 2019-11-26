@@ -18,6 +18,7 @@ window.onload = function () {
         })
     }
 }
+
 function sendRequestCompute(url) {
     createXMLHttpRequest();
     xmlHttpRequest.open("GET", url, true);
