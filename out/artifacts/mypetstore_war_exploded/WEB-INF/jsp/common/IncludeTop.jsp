@@ -32,28 +32,28 @@
 
     <div id="Logo">
         <div id="LogoContent">
-            <a href="main"><img src="../images/logo-topbar.gif" /></a>
+            <a href="main"><img src="images/logo-topbar.gif" /></a>
         </div>
     </div>
 
     <div id="Menu">
         <div id="MenuContent">
             <a href="viewCart"><img align="middle" name="img_cart"
-                                    src="../images/cart.gif" />
+                                    src="images/cart.gif" />
             </a>
-            <img align="middle" src="../images/separator.gif" />
+            <img align="middle" src="images/separator.gif" />
             <c:if test="${sessionScope.account == null}">
                 <a href="signonForm">Sign In</a>
             </c:if>
             <c:if test="${sessionScope.account != null}">
                 <a href="signoff">Sign Out</a>
             </c:if>
-            <img align="middle" src="../images/separator.gif" />
+            <img align="middle" src="images/separator.gif" />
             <c:if test="${sessionScope.account != null}">
                 <a href="editAccountForm">My Account</a>
             </c:if>
-            <img align="middle" src="../images/separator.gif" />
-            <a href="../../../help.html">?</a>
+            <img align="middle" src="images/separator.gif" />
+            <a href="help.html">?</a>
         </div>
     </div>
 
@@ -80,6 +80,6 @@
 
 </div>
 
-<script src="../../../js/searchComplete.js"></script>
+<script src="js/searchComplete.js"></script>
 
 <div id="Content">

@@ -84,7 +84,7 @@
     <div id="Separator">&nbsp;</div>
 </div>
 
-<script src="../../../js/compute.js"></script>
+<script src="js/compute.js"></script>
 
 <%@ include file="../common/IncludeBottom.jsp"%>
 

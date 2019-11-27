@@ -31,7 +31,7 @@
             <tr>
                 <td>Verification:</td>
                 <td><input type="text" name="code"></td>
-                <td><img src="/viewVercode"></td>
+                <td><img src="viewVercode"></td>
             </tr>
         </table>
 
@@ -42,6 +42,6 @@
     </form>
 </div>
 
-<script src="../../../js/register.js"></script>
+<script src="js/register.js"></script>
 
 <%@ include file="../common/IncludeBottom.jsp"%>
