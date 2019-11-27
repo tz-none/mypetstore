@@ -23,7 +23,7 @@
             <tr>
                 <td>Verification:</td>
                 <td><input type="text" name="code"></td>
-                <td><a href=""><img src="/viewVercode"></a></td>
+                <td><a href=""><img src="viewVercode"></a></td>
             </tr>
         </table>
         <p>
