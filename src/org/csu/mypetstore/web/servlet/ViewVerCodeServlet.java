@@ -15,7 +15,7 @@ public class ViewVerCodeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("image/jpeg");
+        response.setContentType("image/jpg");
         //禁止图像缓存
         response.setHeader("Pragma","no-cache");
         response.setHeader("Cache-Control", "no-cache");

@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class AddItemToCartServlet extends HttpServlet {
     private static final String CART = "/WEB-INF/jsp/cart/Cart.jsp";
+    private static final String SIGNON = "/WEB-INF/jsp/account/SignonForm.jsp";
     private String workingItemId;
     private Cart cart;
     private CatalogService service;
@@ -24,9 +25,14 @@ public class AddItemToCartServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        workingItemId = request.getParameter("workingItemId");
-
         HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+        if(account == null) {
+            request.getRequestDispatcher(SIGNON).forward(request, response);
+            return;
+        }
+
+        workingItemId = request.getParameter("workingItemId");
         CatalogService service = new CatalogService();
         cart = (Cart)session.getAttribute("cart");
         if(cart == null) {
@@ -45,8 +51,7 @@ public class AddItemToCartServlet extends HttpServlet {
             //更新购物车数据
             service.insertCartItem(cart.getCartItemById(workingItemId), (Account) session.getAttribute("account"));
         }
-        Account account = (Account) session.getAttribute("account");
-        Logger logger = Logger.getLogger(RemoveItemFromCartServlet.class);
+        Logger logger = Logger.getLogger(AddItemToCartServlet.class);
         logger.info(account.getUsername() + "添加物品" + workingItemId);
 
         session.setAttribute("cart", cart);
