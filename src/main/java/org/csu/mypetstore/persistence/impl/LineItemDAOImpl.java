@@ -16,7 +16,7 @@ public class LineItemDAOImpl implements LineItemDAO {
 
     @Override
     public List<LineItem> getLineItemsByOrderId(int orderId) {
-        List<LineItem> lineItemList = new ArrayList<>();
+        List<LineItem> lineItemList = new ArrayList<LineItem>();
         try {
             Connection connection = DButil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_LINEITEMS_BY_ORDERID);

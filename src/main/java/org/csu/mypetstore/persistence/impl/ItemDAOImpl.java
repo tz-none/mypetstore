@@ -58,7 +58,7 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public List<Item> getItemListByProduct(String productId) {
-        List<Item> itemList = new ArrayList<>();
+        List<Item> itemList = new ArrayList<Item>();
         try {
             Connection connection = DButil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ITEMLIST_BY_PRODUCT);

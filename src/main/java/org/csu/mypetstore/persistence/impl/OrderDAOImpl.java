@@ -19,7 +19,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public List<Order> getOrdersByUsername(String username) {
-        List<Order> orderList = new ArrayList<>();
+        List<Order> orderList = new ArrayList<Order>();
         try {
             Connection connection = DButil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ORDER_BY_USERNAME);

@@ -17,7 +17,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public List<Category> getCategoryList() {
-        List<Category> categoryList = new ArrayList<>();
+        List<Category> categoryList = new ArrayList<Category>();
         try{
             Connection connection = DButil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_CATEGORY_LIST);

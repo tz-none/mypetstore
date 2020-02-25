@@ -17,7 +17,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public List<Product> getProductListByCategory(String categoryId) {
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = new ArrayList<Product>();
         try{
             Connection connection = DButil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_PRODUCT_LIST);
@@ -66,7 +66,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public List<Product> searchProductList(String keywords) {
-        List<Product> productList = new ArrayList<>();
+        List<Product> productList = new ArrayList<Product>();
         try {
             try{
                 Connection connection = DButil.getConnection();
