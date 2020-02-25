@@ -3,10 +3,8 @@ package org.csu.mypetstore.web.servlet;
 import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.domain.Cart;
 import org.csu.mypetstore.domain.Order;
-import org.csu.mypetstore.service.OrderService;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
